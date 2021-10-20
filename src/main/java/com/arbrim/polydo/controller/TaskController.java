@@ -1,31 +1,50 @@
 package com.arbrim.polydo.controller;
 
-import com.arbrim.polydo.model.Task;
+import com.arbrim.polydo.dto.SubtaskDTO;
+import com.arbrim.polydo.dto.TaskDTO;
+import com.arbrim.polydo.request.TaskRequest;
+import com.arbrim.polydo.service.SubtaskService;
 import com.arbrim.polydo.service.TaskService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.github.dozermapper.core.Mapper;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
+    private Mapper mapper;
     private TaskService taskService;
+    private SubtaskService subtaskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(Mapper mapper, TaskService taskService, SubtaskService subtaskService) {
+        this.mapper = mapper;
         this.taskService = taskService;
+        this.subtaskService = subtaskService;
     }
 
     @GetMapping("/")
-    public List<Task> getAllTasks() {
+    public List<TaskDTO> getAllTasks() {
         return taskService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Task getTaskById(Long id) {
+    public TaskDTO getTaskById(@PathVariable("id") Long id) throws Exception {
         return taskService.getById(id);
+    }
+
+    @PostMapping("/")
+    public TaskDTO createTask(@NotNull @Valid @RequestBody TaskRequest taskRequest) {
+        TaskDTO taskDTO = mapper.map(taskRequest, TaskDTO.class);
+        return taskService.createTask(taskDTO);
+    }
+
+    @GetMapping("/{taskId}/subtasks")
+    public List<SubtaskDTO> getAllSubtasksByTaskId(@PathVariable("taskId") Long taskId) {
+        return subtaskService.getAllByTaskId(taskId);
     }
 
 }
