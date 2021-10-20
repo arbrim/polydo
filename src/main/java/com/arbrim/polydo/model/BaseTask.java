@@ -22,7 +22,7 @@ public abstract class BaseTask {
     private String description;
 
     @Column
-    private Boolean status;
+    private Boolean completed;
 
     @Column
     private LocalDateTime expectedDate;
