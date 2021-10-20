@@ -1,5 +1,6 @@
 package com.arbrim.polydo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,8 @@ import java.util.Set;
 @Entity
 public class Task extends BaseTask {
 
-    @OneToMany
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "task", cascade = CascadeType.ALL)
     private Set<Subtask> subtasks;
 
 }

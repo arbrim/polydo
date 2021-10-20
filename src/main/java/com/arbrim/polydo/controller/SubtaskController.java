@@ -1,26 +1,35 @@
 package com.arbrim.polydo.controller;
 
-import com.arbrim.polydo.model.Subtask;
+import com.arbrim.polydo.dto.SubtaskDTO;
+import com.arbrim.polydo.request.SubtaskRequest;
 import com.arbrim.polydo.service.SubtaskService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.github.dozermapper.core.Mapper;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/subtasks")
 public class SubtaskController {
 
+    private Mapper mapper;
     private SubtaskService subtaskService;
 
-    public SubtaskController(SubtaskService subtaskService) {
+    public SubtaskController(Mapper mapper, SubtaskService subtaskService) {
+        this.mapper = mapper;
         this.subtaskService = subtaskService;
     }
 
     @GetMapping("/")
-    public List<Subtask> getAllSubtasks() {
+    public List<SubtaskDTO> getAllSubtasks() {
         return subtaskService.getAll();
     }
 
+    @PostMapping("/")
+    public SubtaskDTO createSubtask(@NotNull @Valid @RequestBody SubtaskRequest subtaskRequest) throws Exception {
+        SubtaskDTO subtaskDTO = mapper.map(subtaskRequest, SubtaskDTO.class);
+        return subtaskService.create(subtaskDTO);
+    }
 }
