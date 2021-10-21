@@ -20,4 +20,5 @@ public class TaskUpdateRequest {
     private String description;
     private Boolean completed;
     private LocalDateTime expectedDate;
+    private Long taskListId;
 }

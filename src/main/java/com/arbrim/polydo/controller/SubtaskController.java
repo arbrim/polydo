@@ -37,7 +37,7 @@ public class SubtaskController {
     @PutMapping("/{subtaskId}")
     public SubtaskDTO updateSubtask(@NotNull @Valid @RequestBody SubtaskUpdateRequest subtaskUpdateRequest, @PathVariable("subtaskId") Long subtaskId) throws Exception {
         SubtaskDTO subtaskDTO = mapper.map(subtaskUpdateRequest, SubtaskDTO.class);
-        return subtaskService.updateTask(subtaskDTO, subtaskId);
+        return subtaskService.update(subtaskDTO, subtaskId);
     }
 
     @DeleteMapping("/{subtaskId}")

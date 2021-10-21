@@ -38,7 +38,7 @@ public class TaskController {
     }
 
     @PostMapping("/")
-    public TaskDTO createTask(@NotNull @Valid @RequestBody TaskRequest taskRequest) {
+    public TaskDTO createTask(@NotNull @Valid @RequestBody TaskRequest taskRequest) throws Exception {
         TaskDTO taskDTO = mapper.map(taskRequest, TaskDTO.class);
         return taskService.createTask(taskDTO);
     }
@@ -51,7 +51,7 @@ public class TaskController {
     @PutMapping("/{taskId}")
     public TaskDTO updateTask(@NotNull @Valid @RequestBody TaskUpdateRequest taskUpdateRequest, @PathVariable("taskId") Long taskId) throws Exception {
         TaskDTO taskDTO = mapper.map(taskUpdateRequest, TaskDTO.class);
-        return taskService.updateTask(taskDTO, taskId);
+        return taskService.update(taskDTO, taskId);
     }
 
     @DeleteMapping("/{taskId}")

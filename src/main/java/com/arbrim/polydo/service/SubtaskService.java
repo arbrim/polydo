@@ -53,7 +53,7 @@ public class SubtaskService {
         }
     }
 
-    public SubtaskDTO updateTask(SubtaskDTO subtaskDTO, Long subtaskId) throws Exception {
+    public SubtaskDTO update(SubtaskDTO subtaskDTO, Long subtaskId) throws Exception {
         validateSubtaskUpdation(subtaskDTO, subtaskId);
         Subtask subtask = mapper.map(subtaskDTO, Subtask.class);
         subtaskRepository.save(subtask);

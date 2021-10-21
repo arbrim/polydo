@@ -15,4 +15,5 @@ import java.util.Set;
 public class TaskDTO extends BaseTaskDTO{
 
     private Set<Subtask> subtasks;
+    private Long taskListId;
 }
