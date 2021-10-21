@@ -3,6 +3,7 @@ package com.arbrim.polydo.controller;
 import com.arbrim.polydo.dto.SubtaskDTO;
 import com.arbrim.polydo.dto.TaskDTO;
 import com.arbrim.polydo.request.TaskRequest;
+import com.arbrim.polydo.request.TaskUpdateRequest;
 import com.arbrim.polydo.service.SubtaskService;
 import com.arbrim.polydo.service.TaskService;
 import com.github.dozermapper.core.Mapper;
@@ -47,4 +48,14 @@ public class TaskController {
         return subtaskService.getAllByTaskId(taskId);
     }
 
+    @PutMapping("/{taskId}")
+    public TaskDTO updateTask(@NotNull @Valid @RequestBody TaskUpdateRequest taskUpdateRequest, @PathVariable("taskId") Long taskId) throws Exception {
+        TaskDTO taskDTO = mapper.map(taskUpdateRequest, TaskDTO.class);
+        return taskService.updateTask(taskDTO, taskId);
+    }
+
+    @DeleteMapping("/{taskId}")
+    public void deleteTask(@PathVariable("taskId") Long taskId) throws Exception {
+        taskService.deleteTask(taskId);
+    }
 }

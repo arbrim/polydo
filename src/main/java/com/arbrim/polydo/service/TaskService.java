@@ -43,4 +43,36 @@ public class TaskService {
     public boolean existsById(Long id){
         return taskRepository.existsById(id);
     }
+
+    public TaskDTO updateTask(TaskDTO taskDTO, Long taskId) throws Exception {
+        validateTaskOnUpdation(taskDTO, taskId);
+        Task task = mapper.map(taskDTO, Task.class);
+        taskRepository.save(task);
+        return taskDTO;
+    }
+
+    private void validateTaskOnUpdation(TaskDTO taskDTO, Long taskId) throws Exception {
+        validateTaskIdsOnTaskUpdation(taskDTO, taskId);
+        validateTaskExistenceOnTaskUpdation(taskDTO);
+    }
+
+    private void validateTaskExistenceOnTaskUpdation(TaskDTO taskDTO) throws Exception {
+        if(!taskRepository.existsById(taskDTO.getId()))
+            throw new Exception(String.format("Task by id [%s] doesn't exist.", taskDTO.getId()));
+    }
+
+    private void validateTaskIdsOnTaskUpdation(TaskDTO taskDTO, Long taskId) throws Exception {
+        if(!taskDTO.getId().equals(taskId))
+            throw new Exception(String.format("Id mismatch. Task id from update request [%s] and path variable [%s] is not the same.", taskDTO.getId(), taskId));
+    }
+
+    public void deleteTask(Long taskId) throws Exception {
+        validateTaskExistenceOnDeletion(taskId);
+        taskRepository.deleteById(taskId);
+    }
+
+    private void validateTaskExistenceOnDeletion(Long taskId) throws Exception {
+        if(!existsById(taskId))
+            throw new Exception(String.format("Task by id %s didn't exist before, thus cant be deleted.", taskId));
+    }
 }
