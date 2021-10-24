@@ -1,8 +1,8 @@
 package com.arbrim.polydo.controller;
 
 import com.arbrim.polydo.dto.TaskListDTO;
-import com.arbrim.polydo.request.TaskListRequest;
-import com.arbrim.polydo.request.TaskListUpdateRequest;
+import com.arbrim.polydo.dto.request.TaskListRequest;
+import com.arbrim.polydo.dto.request.TaskListUpdateRequest;
 import com.arbrim.polydo.service.TaskListService;
 import com.arbrim.polydo.service.TaskService;
 import com.github.dozermapper.core.Mapper;

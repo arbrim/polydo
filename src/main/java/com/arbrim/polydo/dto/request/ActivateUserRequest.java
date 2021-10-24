@@ -1,4 +1,4 @@
-package com.arbrim.polydo.request;
+package com.arbrim.polydo.dto.request;
 
 import com.arbrim.polydo.enums.UserRole;
 import lombok.Getter;

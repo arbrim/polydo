@@ -2,8 +2,8 @@ package com.arbrim.polydo.controller;
 
 import com.arbrim.polydo.dto.SubtaskDTO;
 import com.arbrim.polydo.dto.TaskDTO;
-import com.arbrim.polydo.request.TaskRequest;
-import com.arbrim.polydo.request.TaskUpdateRequest;
+import com.arbrim.polydo.dto.request.TaskRequest;
+import com.arbrim.polydo.dto.request.TaskUpdateRequest;
 import com.arbrim.polydo.service.SubtaskService;
 import com.arbrim.polydo.service.TaskService;
 import com.github.dozermapper.core.Mapper;

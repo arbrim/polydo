@@ -1,9 +1,9 @@
 package com.arbrim.polydo.controller;
 
 import com.arbrim.polydo.dto.PolydoUserDetailsDTO;
-import com.arbrim.polydo.request.AuthenticationRequest;
-import com.arbrim.polydo.request.AuthenticationResponse;
-import com.arbrim.polydo.request.PolydoUserDetailsRequest;
+import com.arbrim.polydo.dto.request.AuthenticationRequest;
+import com.arbrim.polydo.dto.response.AuthenticationResponse;
+import com.arbrim.polydo.dto.request.PolydoUserDetailsRequest;
 import com.arbrim.polydo.service.PolydoUserDetailsService;
 import com.arbrim.polydo.util.JwtUtil;
 import com.github.dozermapper.core.Mapper;

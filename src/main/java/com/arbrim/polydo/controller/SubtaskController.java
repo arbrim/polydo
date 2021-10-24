@@ -1,8 +1,8 @@
 package com.arbrim.polydo.controller;
 
 import com.arbrim.polydo.dto.SubtaskDTO;
-import com.arbrim.polydo.request.SubtaskRequest;
-import com.arbrim.polydo.request.SubtaskUpdateRequest;
+import com.arbrim.polydo.dto.request.SubtaskRequest;
+import com.arbrim.polydo.dto.request.SubtaskUpdateRequest;
 import com.arbrim.polydo.service.SubtaskService;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.web.bind.annotation.*;
