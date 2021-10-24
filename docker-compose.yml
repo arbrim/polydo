@@ -1,0 +1,33 @@
+version: "3.1"
+services:
+  polydo:
+    image: polydo
+    ports:
+      - 8080:8080
+    links:
+      - PostgreSQL
+    depends_on:
+      PostgreSQL:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  PostgreSQL:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=polydo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+#  pgadmin:
+#    image: chorss/docker-pgadmin4
+#    ports:
+#      - 5050:5050
