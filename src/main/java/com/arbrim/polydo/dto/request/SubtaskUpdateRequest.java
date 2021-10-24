@@ -1,4 +1,4 @@
-package com.arbrim.polydo.request;
+package com.arbrim.polydo.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

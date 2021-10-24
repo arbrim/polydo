@@ -4,7 +4,7 @@ import com.arbrim.polydo.dto.PolydoUserDetailsDTO;
 import com.arbrim.polydo.model.User;
 import com.arbrim.polydo.repository.UserRepository;
 
-import com.arbrim.polydo.request.ActivateUserRequest;
+import com.arbrim.polydo.dto.request.ActivateUserRequest;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

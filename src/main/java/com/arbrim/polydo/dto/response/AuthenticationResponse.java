@@ -1,4 +1,4 @@
-package com.arbrim.polydo.request;
+package com.arbrim.polydo.dto.response;
 
 import java.util.List;
 

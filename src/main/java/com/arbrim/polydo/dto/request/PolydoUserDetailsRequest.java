@@ -1,13 +1,13 @@
-package com.arbrim.polydo.request;
-
+package com.arbrim.polydo.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AuthenticationRequest {
-
+public class PolydoUserDetailsRequest {
+    private Long id;
     private String username;
     private String password;
+
 }

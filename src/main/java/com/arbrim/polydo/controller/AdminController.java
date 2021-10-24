@@ -1,7 +1,7 @@
 package com.arbrim.polydo.controller;
 
 import com.arbrim.polydo.dto.PolydoUserDetailsDTO;
-import com.arbrim.polydo.request.ActivateUserRequest;
+import com.arbrim.polydo.dto.request.ActivateUserRequest;
 import com.arbrim.polydo.service.PolydoUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
